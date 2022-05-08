@@ -1,6 +1,7 @@
 import pandas as pd
 import datetime
 import create_application_csv
+import create_user_csv
 
 def main() -> None:
 
@@ -17,6 +18,7 @@ def main() -> None:
                         int(from_date_lst[1]), int(from_date_lst[2]))
         
         create_application_csv.input_dates[0] = from_date
+        create_user_csv.input_dates[0] = from_date
     else:
         print("incorrect usage")
         exit(1)
@@ -35,11 +37,14 @@ def main() -> None:
                         int(to_date_lst[1]), int(to_date_lst[2]))
         
         create_application_csv.input_dates[1] = to_date
+        create_user_csv.input_dates[1] = to_date
     else:
         print("incorrect usage")
         exit(1)
     
     create_application_csv.main()
+    create_user_csv.main()
+    
 
 
 if __name__ == "__main__":

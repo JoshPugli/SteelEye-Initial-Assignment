@@ -18,7 +18,7 @@ user_data = {"user_id": [], "first_name": [], "last_name": [], "email": [],
 
 
 def init_df_dict(header: str, target_dict: dict, add_user_info=False) -> None:
-    for i in range(1, 5):
+    for i in range(1, 6):
         df = pd.read_csv(parent_path + "/" + "csv_files/activity_" + str(i) 
             + ".csv")
         for index, row in df.iterrows():

@@ -74,24 +74,3 @@ def init_df_dict(header: str, target_dict: dict, date_lst: list) -> None:
                             except KeyError:
                                 if row_date <= date_lst[1] and row_date >= date_lst[0]:
                                     target_dict[row[header]] = 1
-
-                        # if row[header] not in target_dict:
-                        #     if date_lst[0] != None and date_lst[1] == None:
-                        #         if row_date >= date_lst[0]:
-                        #             target_dict[row[header]] = 1
-                        #     elif date_lst[0] == None and date_lst[1] != None:
-                        #         if row_date <= date_lst[1]:
-                        #             target_dict[row[header]] = 1
-                        #     else:
-                        #         if row_date <= date_lst[1] and row_date >= date_lst[0]:
-                        #             target_dict[row[header]] = 1
-                        # else:
-                        #     if date_lst[0] != None and date_lst[1] == None:
-                        #         if row_date >= date_lst[0]:
-                        #             target_dict[row[header]] += 1
-                        #     elif date_lst[0] == None and date_lst[1] != None:
-                        #         if row_date <= date_lst[1]:
-                        #             target_dict[row[header]] += 1
-                        #     else:
-                        #         if row_date <= date_lst[1] and row_date >= date_lst[0]:
-                        #             target_dict[row[header]] += 1

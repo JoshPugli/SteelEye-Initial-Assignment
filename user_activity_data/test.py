@@ -4,6 +4,10 @@ import os
 path = os.getcwd()
 parent_path = os.path.abspath(os.path.join(path, os.pardir))
 
+country_data = {"country_name": [], "country_code": [], "total_hits": []}
+user_data = {"user_id": [], "first_name": [], "last_name": [], "email": [], 
+            "total_hits": []}
+
 def main() -> None:
     count = 0
     for i in range(1, 6):

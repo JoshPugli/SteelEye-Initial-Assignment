@@ -1,0 +1,5 @@
+repository_id,repository_name,repository_url,repository_fullname,is_private,repository_description,owner_username,owner_url,owner_type,owner_site_admin,is_fork
+10005,insoshi,https://github.com/cjmiyake/insoshi,cjmiyake/insoshi,False,The open source social networking platform in Ruby on Rails from the author of RailsSpace,cjmiyake,https://github.com/cjmiyake/insoshi,User,False,True
+10013,tryrepos,https://github.com/Timonn/tryrepos,Timonn/tryrepos,False,"my first repos, want to test",Timonn,https://github.com/Timonn/tryrepos,User,False,False
+10021,badger,https://github.com/rayvinly/badger,rayvinly/badger,False,Badger is a simple Rails plugin that creates photo badges,rayvinly,https://github.com/rayvinly/badger,User,False,False
+10024,ffxip,https://github.com/valyana/ffxip,valyana/ffxip,False,FFXI log parser,valyana,https://github.com/valyana/ffxip,User,False,False

@@ -13,10 +13,21 @@ repo_data_map = {"repository_id": "id", "repository_name": "name",
     "owner_type": "type", "owner_site_admin": "site_admin", 
     "is_fork": "fork"}
 
+commit_data_map = {"commit_hash": "sha", "commit_message": "commit.message", "commit_url": "html_url",
+ "author_name": "commit.author.name", "author_username": "author.login", "author_email": "commit.author.email", 
+ "author_url": "author.html_url", "committer_name": "commit.committer.name", "committer_username": "committer.login", "committer_email": "commit.committer.email", 
+ "committer_url": "committer.html_url", }
+
 repo_data = {"repository_id": [], "repository_name": [], 
     "repository_url": [], "repository_fullname": [], "is_private": [], 
     "repository_description": [], "owner_username": [], "owner_url": [],
     "owner_type": [], "owner_site_admin": [], "is_fork": []}
+
+
+commit_data = {"commit_hash": [], "commit_message": [], 
+    "commit_url": [], "author_name": [], "author_username": [], 
+    "author_email": [], "author_url": [], "committer_name": [],
+    "committer_username": [], "committer_email": [], "committer_url": []}
 
 
 def main():
@@ -46,9 +57,47 @@ def main():
                 repo_data[key].append(repos[i]["owner"][repo_data_map[key]])
     
     repo_data_df = pd.DataFrame(repo_data)  
-    repo_data_df.to_csv("repo_details.csv", index=False)
-
+    repo_data_df.to_csv("repo_details_.csv", 
+                        index=False)
     
+
+    for index, row in repo_data_df.iterrows():
+        
+        commit_url =  "https://api.github.com/repos/" + row["owner_username"] + "/" + row["repository_name"] + "/commits"
+        print(commit_url)
+        commits = requests.get(commit_url,headers=headers).json()
+
+        for i in range(0, max_commit_count):
+            for key in commit_data_map:
+                code = commit_data_map[key].split(".")
+
+                if len(code) == 1:
+                    try:
+                        commit_data[key].append(commits[i][code[0]])
+                    except KeyError:
+                        pass
+                elif len(code) == 2:
+                    try:
+                        commit_data[key].append(commits[i][code[0]][code[1]])
+                    except KeyError:
+                        pass
+                elif len(code) == 3:
+                    try:
+                        commit_data[key].append(commits[i][code[0]][code[1]][code[2]])
+                    except KeyError:
+                        pass
+                else:
+                    # Shouldn't get here
+                    exit(1)
+            commit_df = pd.DataFrame(commit_data)
+            commit_df.to_csv("commits_" + row["repository_name"] + ".csv", index=False)      
+            
+
+
+        
+        
+
+
         
 
 

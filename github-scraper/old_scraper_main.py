@@ -30,7 +30,7 @@ repo_data = {"repository_id": [], "repository_name": [],
     "owner_type": [], "owner_site_admin": [], "is_fork": []}
 
 
-def run_program(repository_count: int, max_commit_count: int):
+def main():
     """ Program that starts from 
     https://api.github.com/repositories?since=10000 and extracts the data 
     for all repositories into single csv file, and extracts commit details 
@@ -55,13 +55,24 @@ def run_program(repository_count: int, max_commit_count: int):
             logging.exception("Exception occurred: %s", e)
             exit(1)
 
-    if not isinstance(repository_count, int) or not isinstance(max_commit_count, int):
-        logging.error("Incorrect parameter type: Parameters must be "
-            "integers.")
+
+    args = sys.argv[1:]
+
+    if len(args) != 2:
+        logging.error("Incorrect number of arguments.\nUsage: python3"
+                    " scraper_main repository_count max_commit_count")
+        exit(1)
+
+    try:
+        repository_count = int(args[0])
+        max_commit_count = int(args[1])
+    except ValueError:
+        logging.error("Command line arguments must be integers.")
         exit(1)
 
     if not (1 <= repository_count <= 30) or not (1 <= max_commit_count <= 30):
-        logging.error("Parameters must be between 1 and 30 inclusive.")
+        logging.error("Command line arguments must be between 1 and 30" 
+                    " inclusive.")
         exit(1)
 
 
@@ -102,7 +113,6 @@ def run_program(repository_count: int, max_commit_count: int):
             "committer_url": []}
         
         commit_url =  "https://api.github.com/repos/" + row["owner_username"] + "/" + row["repository_name"] + "/commits"
-        print(commit_url)
         commits = requests.get(commit_url, headers = headers).json()
 
         for i in range(0, max_commit_count):
@@ -153,9 +163,6 @@ def run_program(repository_count: int, max_commit_count: int):
             commit_df.to_csv("commits_" + row["repository_name"] + ".csv",
                             index=False)      
             
-
-def main():
-    run_program(3, 3)
 
 
 if __name__ == "__main__":

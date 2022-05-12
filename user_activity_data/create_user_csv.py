@@ -2,6 +2,9 @@ from pseudo_header import path, parent_path, init_df_dict
 import pandas as pd
 from ipwhois import IPWhois
 
+country_data = {"country_name": [], "country_code": [], "total_hits": []}
+user_data = {"user_id": [], "first_name": [], "last_name": [], "email": [], 
+            "total_hits": []}
 
 # Initializes input dates. This is mutated by user input through main.py
 input_dates = [None, None]

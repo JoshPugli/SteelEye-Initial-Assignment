@@ -25,7 +25,7 @@ def init_df_dict(header: str, target_dict: dict, date_lst: list) -> None:
         for index, row in df.iterrows():
             
             # This will execute if user_main is run without args
-            if date_lst[0] == None:
+            if date_lst[0] == None and date_lst[1] == None:
                 if pd.isna(row[header]):
                     pass
                 else:
@@ -50,10 +50,24 @@ def init_df_dict(header: str, target_dict: dict, date_lst: list) -> None:
                         row_date = datetime.datetime(int(input_date[0]), 
                                 int(input_date[1]), int(input_date[2]))
 
-
-                        if row[header] in target_dict:
-                            if row_date <= date_lst[1] and row_date >= date_lst[0]:
-                                target_dict[row[header]] += 1
+                        if date_lst[0] != None and date_lst[1] != None:
+                            if row[header] in target_dict:
+                                if row_date <= date_lst[1] and row_date >= date_lst[0]:
+                                    target_dict[row[header]] += 1
+                            else:
+                                if row_date <= date_lst[1] and row_date >= date_lst[0]:
+                                    target_dict[row[header]] = 1
+                        elif date_lst[0] != None and date_lst[1] == None:
+                            if row[header] in target_dict:
+                                if row_date >= date_lst[0]:
+                                    target_dict[row[header]] += 1
+                            else:
+                                if row_date >= date_lst[0]:
+                                    target_dict[row[header]] = 1
                         else:
-                            if row_date <= date_lst[1] and row_date >= date_lst[0]:
-                                target_dict[row[header]] = 1
+                            if row[header] in target_dict:
+                                if row_date <= date_lst[1]:
+                                    target_dict[row[header]] += 1
+                            else:
+                                if row_date <= date_lst[1]:
+                                    target_dict[row[header]] = 1

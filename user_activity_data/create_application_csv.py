@@ -1,7 +1,8 @@
 import pandas as pd
 from pseudo_header import init_df_dict
 
-# Initializes input dates. This is mutated by user input through main.py
+# Initializes input dates. This is mutated by user input through 
+# user_activity_main.py
 input_dates = [None, None]
 
 def main():

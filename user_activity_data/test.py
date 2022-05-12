@@ -1,30 +1,16 @@
+import unittest
+import user_activity_main
+import manual_parse
 import pandas as pd
-import os
-import ipaddress
 
-path = os.getcwd()
-parent_path = os.path.abspath(os.path.join(path, os.pardir))
+class TestActivity(unittest.TestCase):
 
-country_data = {"country_name": [], "country_code": [], "total_hits": []}
-user_data = {"user_id": [], "first_name": [], "last_name": [], "email": [], 
-            "total_hits": []}
+    def test_no_args(self):
+        user_activity_main.main()
+        df = pd.read_csv("top_3_applications.csv")
 
-def main() -> None:
-    count = 0
-    for i in range(1, 6):
-        df = pd.read_csv(parent_path + "/" + "csv_files/activity_" + str(i) 
-            + ".csv")
-        for index, row in df.iterrows(): 
-            if row["application"] == "Safari" and row["date"] == "2021-08-24":
-                count += 1
+        
+    
 
-    print(count)
-
-    df = pd.read_csv(parent_path + "/" + "csv_files/user_dataset.csv")
-    for index, row in df.iterrows():
-        if pd.notna(row["ip_address"]):
-            if ipaddress.ip_address(row["ip_address"]) in ipaddress.ip_network('177.145.0.0/16'):
-                    print("yuh")
-
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    unittest.main()

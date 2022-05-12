@@ -13,7 +13,7 @@ def init_df_dict(header: str, target_dict: dict, date_lst: list) -> None:
 
     If date_lst != [None, None], this function will only count the 
     strings in rows containing to date cells larger than date_lst[0] and 
-    smaller than date_lst[1], if applicable.
+    smaller than date_lst[1].
 
     Note: If the date cell of a row is empty, it will be counted if the
     date_lst == [None, None], and will not be counted otherwise.
@@ -24,7 +24,7 @@ def init_df_dict(header: str, target_dict: dict, date_lst: list) -> None:
             + ".csv")
         for index, row in df.iterrows():
             
-            # Case where from_date and to_date are empty
+            # This will execute if user_main is run without args
             if date_lst[0] == None:
                 if pd.isna(row[header]):
                     pass
@@ -34,13 +34,14 @@ def init_df_dict(header: str, target_dict: dict, date_lst: list) -> None:
                     else:
                         target_dict[row[header]] += 1
 
+            # If date_lst contains date objects
             else:
-
+                
+                # If header cell is empty, ignore
                 if pd.isna(row[header]):
                     pass
                 else:
 
-                    # If date cell in current row is nan ignore
                     if pd.isna(row["date"]):
                         pass
                     else:
@@ -49,10 +50,10 @@ def init_df_dict(header: str, target_dict: dict, date_lst: list) -> None:
                         row_date = datetime.datetime(int(input_date[0]), 
                                 int(input_date[1]), int(input_date[2]))
 
-                        
-                        try:
+
+                        if row[header] in target_dict:
                             if row_date <= date_lst[1] and row_date >= date_lst[0]:
                                 target_dict[row[header]] += 1
-                        except KeyError:
+                        else:
                             if row_date <= date_lst[1] and row_date >= date_lst[0]:
                                 target_dict[row[header]] = 1

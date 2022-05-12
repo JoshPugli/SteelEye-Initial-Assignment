@@ -25,6 +25,7 @@ def main():
     
     df = pd.read_csv(parent_path + "/" + "csv_files/user_dataset.csv")
 
+    print(cidr_lst)
     # for index, row in df.iterrows():
     #     for i in cidr_lst:
     #         if ipaddress.ip_address(row["ip_address"]) in ipaddress.ip_network(cidr_lst[i]):

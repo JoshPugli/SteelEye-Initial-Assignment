@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import ipaddress
 
 path = os.getcwd()
 parent_path = os.path.abspath(os.path.join(path, os.pardir))
@@ -19,6 +20,11 @@ def main() -> None:
 
     print(count)
 
+    df = pd.read_csv(parent_path + "/" + "csv_files/user_dataset.csv")
+    for index, row in df.iterrows():
+        if pd.notna(row["ip_address"]):
+            if ipaddress.ip_address(row["ip_address"]) in ipaddress.ip_network('177.145.0.0/16'):
+                    print("yuh")
 
 if __name__ == "__main__":
     main()

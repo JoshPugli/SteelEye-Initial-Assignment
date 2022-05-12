@@ -25,7 +25,7 @@ def init_df_dict(header: str, target_dict: dict, date_lst: list) -> None:
         for index, row in df.iterrows():
             
             # Case where from_date and to_date are empty
-            if date_lst[0] == None and date_lst[1] == None:
+            if date_lst[0] == None:
                 if pd.isna(row[header]):
                     pass
                 else:
@@ -49,28 +49,10 @@ def init_df_dict(header: str, target_dict: dict, date_lst: list) -> None:
                         row_date = datetime.datetime(int(input_date[0]), 
                                 int(input_date[1]), int(input_date[2]))
 
-                        # 3 cases, deal when there is an upper bound
-                        # lower bound, and both on valid dates
-                        if date_lst[0] != None and date_lst[1] == None:
-                            # If row[header] in dict, increment
-                            try:
-                                if row_date >= date_lst[0]:
-                                    target_dict[row[header]] += 1
-                            # Otherwise, initialize key value pair 
-                            except KeyError:
-                                if row_date >= date_lst[0]:
-                                    target_dict[row[header]] = 1
-                        elif date_lst[0] == None and date_lst[1] != None:
-                            try:
-                                if row_date <= date_lst[1]:
-                                    target_dict[row[header]] += 1
-                            except KeyError:
-                                if row_date <= date_lst[1]:
-                                    target_dict[row[header]] = 1
-                        else:
-                            try:
-                                if row_date <= date_lst[1] and row_date >= date_lst[0]:
-                                    target_dict[row[header]] += 1
-                            except KeyError:
-                                if row_date <= date_lst[1] and row_date >= date_lst[0]:
-                                    target_dict[row[header]] = 1
+                        
+                        try:
+                            if row_date <= date_lst[1] and row_date >= date_lst[0]:
+                                target_dict[row[header]] += 1
+                        except KeyError:
+                            if row_date <= date_lst[1] and row_date >= date_lst[0]:
+                                target_dict[row[header]] = 1

@@ -4,7 +4,7 @@ import sys
 import create_application_csv
 import create_user_csv
 
-# python3 -c 'from user_activity_main import main; main()'
+# python3 -c 'from user_activity_main import run_program; run_program()'
 
 def run_program(from_date=None, to_date=None) -> None:
     """Simple program to rank users, country and application based on the 
@@ -49,7 +49,7 @@ def run_program(from_date=None, to_date=None) -> None:
 
     
     create_application_csv.main()
-    # create_user_csv.main()
+    create_user_csv.main()
     
 
 

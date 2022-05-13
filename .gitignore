@@ -2,3 +2,5 @@ __pycache__/
 top_3_applications.csv
 repo_details_.csv
 commits_*.csv
+top_3_countries.csv
+top_10_users.csv

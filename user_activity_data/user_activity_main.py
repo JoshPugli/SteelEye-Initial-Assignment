@@ -64,7 +64,7 @@ def main():
     
     flag = False
     if args == [''] or len(args) == 0:
-        # If user inputs no command line args, leave input_dates as None
+        # If user inputs no command line args, run program with no input
         flag = True
     elif len(args) == 2:
         # Sets input_dates of called files
@@ -75,7 +75,7 @@ def main():
             logging.error("Command line arguments must be integers between"
             "1 and 31 inclusive.")
             exit(1)
-        
+    
     if flag:
         run_program()
     else:

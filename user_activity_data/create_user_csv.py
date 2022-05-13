@@ -53,8 +53,9 @@ def main():
     try:
         f = open("IP_ranges.txt", "r")
         old_data = f.read()
-        old_data_lst = old_data.split(" ")
 
+        old_data_lst = old_data.split(" ")
+        f.close()
         cidr_dict = {}
 
         for kv_pair in old_data_lst:

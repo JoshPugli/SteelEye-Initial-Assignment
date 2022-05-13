@@ -8,11 +8,11 @@ sys.path.append(os.path.abspath('../user_activity_data'))
 
 import user_activity_main
 
-
 path = os.getcwd()
 parent_path = os.path.abspath(os.path.join(path, os.pardir))
 
 class TestActivity(unittest.TestCase):
+    """Testing takes a long time, but each test is comprehensive"""
 
     def test_single_day(self):
         """Test user_activity_main for each individual day in August 2021"""

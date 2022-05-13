@@ -40,5 +40,4 @@ def main():
 
     # Turn app_data into a pandas dataframe, and convert to csv file
     app_df = pd.DataFrame(app_data)  
-    print(app_df)
     app_df.to_csv("top_3_applications.csv", index=False)

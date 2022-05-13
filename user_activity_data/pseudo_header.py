@@ -7,9 +7,10 @@ parent_path = os.path.abspath(os.path.join(path, os.pardir))
 
 
 def init_df_dict(header: str, target_dict: dict, date_lst: list) -> None:
-    """Function that alters target_dict parameter. The keys represent each
-    unique string at row with label "header" in activity_1-5.csv, 
-    and the values are the number of times each string occurs.
+    """Function that mutates target_dict parameter to store number of 
+    occurances of each unique string under header. The keys represent
+    unique strings at row with label "header" in activity_1-5.csv, 
+    and the values are the total hits for each string.
 
     If date_lst != [None, None], this function will only count the 
     strings in rows containing to date cells larger than date_lst[0] and 
@@ -50,6 +51,7 @@ def init_df_dict(header: str, target_dict: dict, date_lst: list) -> None:
                         row_date = datetime.datetime(int(input_date[0]), 
                                 int(input_date[1]), int(input_date[2]))
 
+                        # Either initialize or increment key-value pair
                         if date_lst[0] != None and date_lst[1] != None:
                             if row[header] in target_dict:
                                 if row_date <= date_lst[1] and row_date >= date_lst[0]:

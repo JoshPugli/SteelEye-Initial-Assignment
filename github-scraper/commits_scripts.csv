@@ -1,0 +1,9 @@
+commit_hash,commit_message,commit_url,author_name,author_username,author_email,author_url,committer_name,committer_username,committer_email,committer_url
+cc6f47849e4c87276b0f2fedc77910b82f6ed6d2,"add smtp-servers.pl
+
+It continually makes a tcp connection to an smtp server.  Records the name
+advertised in the banner, and keeps a count of the number of times that name
+appears.  Useful for checking a correct ratio in load balanced virtuals.",https://github.com/ggriffiniii/scripts/commit/cc6f47849e4c87276b0f2fedc77910b82f6ed6d2,Glenn Griffin,None,griffin@sbox.olympus.f5net.com,None,Glenn Griffin,None,griffin@sbox.olympus.f5net.com,None
+f6da86fd90f77fd96e8b233bb9299cbe3086db48,"adding tcping.pl
+
+The tcp pinger script that has been useful from time to time",https://github.com/ggriffiniii/scripts/commit/f6da86fd90f77fd96e8b233bb9299cbe3086db48,Glenn Griffin,None,griffin@sbox.olympus.f5net.com,None,Glenn Griffin,None,griffin@sbox.olympus.f5net.com,None

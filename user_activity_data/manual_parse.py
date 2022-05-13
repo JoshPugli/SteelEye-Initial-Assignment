@@ -37,9 +37,7 @@ def parse_app_data_no_date(application: str) -> int:
 
 def main():
     count1 = parse_app_data("Safari", "2021-08-24")
-    print(count1)
     count2 = parse_app_data_no_date("Safari")
-    print(count2)
 
 if __name__ == "__main__":
     main() 

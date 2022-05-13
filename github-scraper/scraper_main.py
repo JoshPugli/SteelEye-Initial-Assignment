@@ -85,7 +85,6 @@ def create_commit_csvs(max_commit_count: int, df: pd.DataFrame) -> None:
             "committer_url": []}
         
         commit_url =  "https://api.github.com/repos/" + row["owner_username"] + "/" + row["repository_name"] + "/commits"
-        print(commit_url)
         commits = requests.get(commit_url, headers = headers).json()
 
         for i in range(0, max_commit_count):

@@ -26,7 +26,6 @@ def main() -> None:
     # Create a list of command line args
     args = sys.argv[1:]
     
-
     
     if len(args) == 0:
         # If user inputs no command line args, leave input_dates as None

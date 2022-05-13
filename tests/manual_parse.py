@@ -35,6 +35,3 @@ def parse_app_data_no_date(application: str) -> int:
                 count += 1
     
     return count
-
-
-# git push https://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@github.com/JoshPugli/SteelEye-Initial-Assignment.git

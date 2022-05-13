@@ -1,12 +1,13 @@
 import logging
 import datetime
+import sys
 import create_application_csv
 import create_user_csv
 
 # python3 -c 'from user_activity_main import main; main()'
 
 def run_program(from_date=None, to_date=None) -> None:
-    """ Simple program to rank users, country and application based on the 
+    """Simple program to rank users, country and application based on the 
     activity data for the month of August 2021 from csv files.
     
     - Parameters must be integers between 1 and 31 inclusive, and represent a 
@@ -53,7 +54,34 @@ def run_program(from_date=None, to_date=None) -> None:
 
 
 def main():
-    run_program()
+    logging.info("Running user_activity_main.py...\n")
+    user_in = input("Type two space seperated integers between 1 and 31, "
+        "representing from_date and to_date respectively. Press enter without "
+        "typing to leave unbounded.\n")
+    
+    # Create list from command line args
+    args = user_in.split(" ")
+    
+    flag = False
+    if args == [''] or len(args) == 0:
+        # If user inputs no command line args, leave input_dates as None
+        flag = True
+    elif len(args) == 2:
+        # Sets input_dates of called files
+        try:
+            from_date = int(args[0])
+            to_date = int(args[1])
+        except ValueError:
+            logging.error("Command line arguments must be integers between"
+            "1 and 31 inclusive.")
+            exit(1)
+        
+    if flag:
+        run_program()
+    else:
+        run_program(from_date, to_date)
+
+    
 
 
 if __name__ == "__main__":

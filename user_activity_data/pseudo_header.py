@@ -48,16 +48,20 @@ def init_df_dict(header: str, target_dict: dict, date_lst: list) -> None:
                     else:
                         # Convert date cell in current row to datetime df
                         input_date = row["date"].split("-")
+                        # datetime has built in error checking, and will 
+                        # catch non-real dates as needed
                         row_date = datetime.datetime(int(input_date[0]), 
                                 int(input_date[1]), int(input_date[2]))
 
                         # Either initialize or increment key-value pair
                         if date_lst[0] != None and date_lst[1] != None:
                             if row[header] in target_dict:
-                                if row_date <= date_lst[1] and row_date >= date_lst[0]:
+                                if (row_date <= date_lst[1] and 
+                                    row_date >= date_lst[0]):
                                     target_dict[row[header]] += 1
                             else:
-                                if row_date <= date_lst[1] and row_date >= date_lst[0]:
+                                if (row_date <= date_lst[1] and 
+                                    row_date >= date_lst[0]):
                                     target_dict[row[header]] = 1
                         elif date_lst[0] != None and date_lst[1] == None:
                             if row[header] in target_dict:

@@ -37,13 +37,4 @@ def parse_app_data_no_date(application: str) -> int:
     return count
 
 
-def main():
-    count1 = parse_app_data("Safari", "2021-08-24")
-    count2 = parse_app_data_no_date("Safari")
-
-
-if __name__ == "__main__":
-    main() 
-
-
-# git push https://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@github.com/JoshPugli/SteelEye-Initial-Assignment.git
+# git push https://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@github.com/JoshPugli/SteelEye-Initial-Assignment.git

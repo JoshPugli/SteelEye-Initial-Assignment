@@ -33,8 +33,10 @@ def main() -> None:
     elif len(args) == 2:
         # Sets input_dates of called files
         try:
-            from_date = datetime.datetime(2021, 8, min(int(args[0]), int(args[1])))
-            to_date = datetime.datetime(2021, 8, max(int(args[0]), int(args[1])))
+            from_date = datetime.datetime(2021, 8, min(int(args[0]),
+                int(args[1])))
+            to_date = datetime.datetime(2021, 8, max(int(args[0]), 
+                int(args[1])))
         except ValueError:
             logging.error("Command line arguments must be integers between"
             "1 and 31 inclusive.")

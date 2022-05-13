@@ -4,6 +4,7 @@
         79
     ],
     "python.analysis.extraPaths": [
-        "./user_activity_data/src/ipwhois"
+        "./user_activity_data/src/ipwhois",
+        "./user_activity_data"
     ]
 }
